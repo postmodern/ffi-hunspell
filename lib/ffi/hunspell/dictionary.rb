@@ -33,7 +33,7 @@ module FFI
         if block_given?
           yield dict
 
-          dict.destroy
+          dict.close
           return nil
         else
           return dict
@@ -132,7 +132,7 @@ module FFI
       #
       # Closes the dictionary.
       #
-      def destroy
+      def close
         Hunspell.Hunspell_destroy(self)
       end
 
