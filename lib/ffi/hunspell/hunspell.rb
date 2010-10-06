@@ -26,5 +26,23 @@ module FFI
     #   attach_function :Hunspell_stem2, [:pointer, :pointer, :pointer, :int], :int
     #   attach_function :Hunspell_generate2, [:pointer, :pointer, :string, :pointer, :int], :int
     #
+
+    #
+    # Opens a Hunspell dictionary.
+    #
+    # @param [String] path
+    #   The path prefix shared by the `.aff` and `.dic` files.
+    #
+    # @yield [dict]
+    #   The given block will be passed the Hunspell dictionary.
+    #
+    # @yieldparam [Dictionary] dict
+    #   The opened dictionary.
+    #
+    # @return [nil]
+    #
+    def Hunspell.dict(path,&block)
+      Dictionary.open(path,&block)
+    end
   end
 end

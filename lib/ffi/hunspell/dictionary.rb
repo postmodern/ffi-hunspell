@@ -12,6 +12,21 @@ module FFI
                end
       end
 
+      #
+      # Opens a Hunspell dictionary.
+      #
+      # @param [String] path
+      #   The path prefix shared by the `.aff` and `.dic` files.
+      #
+      # @yield [dict]
+      #   The given block will be passed the Hunspell dictionary.
+      #
+      # @yieldparam [Dictionary] dict
+      #   The opened dictionary.
+      #
+      # @return [Dictionary]
+      #   If no block is given, the open dictionary will be returned.
+      #
       def self.open(path)
         dict = self.new("#{path}.aff","#{path}.dic")
 
