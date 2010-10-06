@@ -49,6 +49,26 @@ module FFI
         Hunspell.Hunspell_spell(self,word.to_s) != 0
       end
 
+      def stem(word)
+        stem_ptr = FFI::MemoryPointer.new(:pointer)
+        count = Hunspell.Hunspell_stem(self,stem_ptr,word.to_s)
+        stem_ptr = stem_ptr.get_pointer(0)
+
+        return (0...count).map do |i|
+          stem_ptr.get_pointer(i).get_string(0)
+        end
+      end
+
+      def suggest(word)
+        suggestion_ptr = FFI::MemoryPointer.new(:pointer)
+        count = Hunspell.Hunspell_suggest(self,suggestion_ptr,word.to_s)
+        suggestion_ptr = suggestion_ptr.get_pointer(0)
+
+        return (0...count).map do |i|
+          suggestion_ptr.get_pointer(i).get_string(0)
+        end
+      end
+
       def destroy
         Hunspell.Hunspell_destroy(self)
       end
