@@ -12,6 +12,19 @@ module FFI
                end
       end
 
+      def self.open(path)
+        dict = self.new("#{path}.aff","#{path}.dic")
+
+        if block_given?
+          yield dict
+
+          dict.destroy
+          return nil
+        else
+          return dict
+        end
+      end
+
       def encoding
         Hunspell.Hunspell_get_dic_encoding(self)
       end
