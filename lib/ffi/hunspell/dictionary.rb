@@ -99,9 +99,11 @@ module FFI
       # @return [Boolean]
       #   Specifies whether the word is valid.
       #
-      def check(word)
+      def check?(word)
         Hunspell.Hunspell_spell(self,word.to_s) != 0
       end
+
+      alias valid? check?
 
       #
       # Finds the stems of a word.
