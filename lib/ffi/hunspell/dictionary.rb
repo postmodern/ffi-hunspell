@@ -4,11 +4,23 @@ module FFI
   module Hunspell
     class Dictionary
 
-      def initialize(affix_path,dict_path,key=nil)
+      #
+      # Creates a new dictionary.
+      #
+      # @param [String] affix_path
+      #   The path to the `.aff` file.
+      #
+      # @param [String] dict_path
+      #   The path to the `.dic` file.
+      #
+      # @param [String] key
+      #   The optional key for encrypted dictionary files.
+      #
+      def initialize(affix_path,dic_path,key=nil)
         @ptr = if key
-                 Hunspell.Hunspell_create_key(affix_path,dict_path,key)
+                 Hunspell.Hunspell_create_key(affix_path,dic_path,key)
                else
-                 Hunspell.Hunspell_create(affix_path,dict_path)
+                 Hunspell.Hunspell_create(affix_path,dic_path)
                end
       end
 
