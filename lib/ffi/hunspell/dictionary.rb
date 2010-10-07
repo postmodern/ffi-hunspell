@@ -53,6 +53,16 @@ module FFI
       end
 
       #
+      # Determines if the dictionary is closed.
+      #
+      # @return [Boolean]
+      #   Specifies whether the dictionary was closed.
+      #
+      def closed?
+        @ptr.nil?
+      end
+
+      #
       # The encoding of the dictionary file.
       #
       # @return [String]

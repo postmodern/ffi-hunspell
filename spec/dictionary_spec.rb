@@ -27,7 +27,7 @@ describe Hunspell::Dictionary do
     dict = subject.open(path)
     dict.close
 
-    dict.to_ptr.should be_nil
+    dict.should be_closed
   end
 
   it "should provide the encoding of the dictionary files" do
