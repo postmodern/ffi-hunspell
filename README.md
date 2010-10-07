@@ -8,9 +8,32 @@
 
 Ruby FFI bindings for [Hunspell](http://hunspell.sourceforge.net/).
 
-## Features
-
 ## Examples
+
+Open a dictionary:
+
+    require 'ffi/hunspell'
+    
+    dict = FFI::Hunspell.dict('/usr/share/myspell/en_US')
+    # ...
+    dict.close
+
+    FFI::Hunspell.dict('/usr/share/myspell/en_US') do |dict|
+      # ...
+    end
+
+Check if a word is valid:
+
+    dict.check?('dog')
+    # => true
+
+    dict.check?('d0g')
+    # => false
+
+Find the stems of a word:
+
+    dict.stem('dogs')
+    # => ["dog"]
 
 ## Requirements
 
