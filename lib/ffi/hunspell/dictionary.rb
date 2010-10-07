@@ -133,12 +133,6 @@ module FFI
       # @param [String] word
       #   The word in question.
       #
-      # @yield [suggested]
-      #   If a block is given, it will be passed each suggested word.
-      #
-      # @yieldparam [String] suggested
-      #   A suggested alternate spelling for the word.
-      #
       # @return [Array<String>]
       #   The suggestions for the word.
       #
@@ -149,12 +143,7 @@ module FFI
           count = Hunspell.Hunspell_suggest(self,output,word.to_s)
           ptr = output.get_pointer(0)
 
-          ptr.get_array_of_pointer(0,count).each do |suggested_ptr|
-            suggested = suggested_ptr.get_string(0)
-
-            yield suggested if block_given?
-            suggestions << suggested
-          end
+          suggestions = ptr.get_array_of_string(0,count)
         end
 
         return suggestions
