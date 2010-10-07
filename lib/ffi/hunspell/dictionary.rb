@@ -115,13 +115,18 @@ module FFI
       #   The stems of the word.
       #
       def stem(word)
-        stem_ptr = FFI::MemoryPointer.new(:pointer)
-        count = Hunspell.Hunspell_stem(self,stem_ptr,word.to_s)
-        stem_ptr = stem_ptr.get_pointer(0)
+        stems = []
 
-        return (0...count).map do |i|
-          stem_ptr.get_pointer(i).get_string(0)
+        FFI::MemoryPointer.new(:pointer) do |stem_ptr|
+          count = Hunspell.Hunspell_stem(self,stem_ptr,word.to_s)
+          ptr = stem_ptr.get_pointer(0)
+
+          count.times do |i|
+            stems << ptr.get_pointer(i).get_string(0)
+          end
         end
+
+        return stems
       end
 
       #
@@ -134,13 +139,18 @@ module FFI
       #   The suggestions for the word.
       #
       def suggest(word)
-        suggestion_ptr = FFI::MemoryPointer.new(:pointer)
-        count = Hunspell.Hunspell_suggest(self,suggestion_ptr,word.to_s)
-        suggestion_ptr = suggestion_ptr.get_pointer(0)
+        suggestions = []
 
-        return (0...count).map do |i|
-          suggestion_ptr.get_pointer(i).get_string(0)
+        FFI::MemoryPointer.new(:pointer) do |suggestion_ptr|
+          count = Hunspell.Hunspell_suggest(self,suggestion_ptr,word.to_s)
+          ptr = suggestion_ptr.get_pointer(0)
+
+          count.times do |i|
+            suggestions << ptr.get_pointer(i).get_string(0)
+          end
         end
+
+        return suggestions
       end
 
       #
