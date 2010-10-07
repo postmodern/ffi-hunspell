@@ -28,9 +28,12 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
+    "ffi-hunspell.gemspec",
     "lib/ffi/hunspell.rb",
     "lib/ffi/hunspell/dictionary.rb",
-    "lib/ffi/hunspell/hunspell.rb"
+    "lib/ffi/hunspell/hunspell.rb",
+    "spec/dictionary_spec.rb",
+    "spec/spec_helper.rb"
   ]
   s.has_rdoc = %q{yard}
   s.homepage = %q{http://github.com/postmodern/ffi-hunspell}
@@ -39,6 +42,10 @@ Gem::Specification.new do |s|
   s.requirements = ["libhunspell >= 1.2.0"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{FFI bindings for Hunspell}
+  s.test_files = [
+    "spec/dictionary_spec.rb",
+    "spec/spec_helper.rb"
+  ]
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
