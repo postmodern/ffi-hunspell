@@ -35,6 +35,11 @@ Find the stems of a word:
     dict.stem('dogs')
     # => ["dog"]
 
+Suggest alternate spellings for a word:
+
+    dict.suggest('arbitrage')
+    # => ["arbitrage", "arbitrages", "arbitrager", "arbitraged", "arbitrate"]
+
 ## Requirements
 
 * [libhunspell](http://hunspell.sourceforge.net/) >= 1.2.0
