@@ -165,8 +165,13 @@ module FFI
       #
       # Closes the dictionary.
       #
+      # @return [nil]
+      #
       def close
         Hunspell.Hunspell_destroy(self)
+
+        @ptr = nil
+        return nil
       end
 
       #
