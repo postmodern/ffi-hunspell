@@ -135,6 +135,12 @@ module FFI
       # @param [String] word
       #   The word in question.
       #
+      # @yield [suggested]
+      #   If a block is given, it will be passed each suggested word.
+      #
+      # @yieldparam [String] suggested
+      #   A suggested alternate spelling for the word.
+      #
       # @return [Array<String>]
       #   The suggestions for the word.
       #
@@ -146,7 +152,10 @@ module FFI
           ptr = suggestion_ptr.get_pointer(0)
 
           count.times do |i|
-            suggestions << ptr.get_pointer(i).get_string(0)
+            suggested = ptr.get_pointer(i).get_string(0)
+
+            yield suggested if block_given?
+            suggestions << suggested
           end
         end
 
