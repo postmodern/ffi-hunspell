@@ -45,7 +45,19 @@ describe Hunspell::Dictionary do
 
   it "should find the stems of a word" do
     subject.open(path) do |dict|
-      dict.stem('dogs').should == %w[dog]
+      dict.stem('fishing').should == %w[fishing fish]
+    end
+  end
+
+  it "should suggest alternate spellings for words" do
+    subject.open(path) do |dict|
+      dict.suggest('arbitrage').should == %w[
+        arbitrage
+        arbitrages
+        arbitrager
+        arbitraged
+        arbitrate
+      ]
     end
   end
 end
