@@ -15,5 +15,5 @@ dependencies:
 
 development_dependencies:
   ore: ~> 0.2.0
-  ore-tasks: ~> 0.1.0
+  ore-tasks: ~> 0.1.2
   yard: ~> 0.6.0
