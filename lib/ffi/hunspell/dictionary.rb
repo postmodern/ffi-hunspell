@@ -22,7 +22,18 @@ module FFI
       # @param [String] key
       #   The optional key for encrypted dictionary files.
       #
+      # @raise [RuntimeError]
+      #   Either the affix or dic files did not exist.
+      #
       def initialize(affix_path,dic_path,key=nil)
+        unless File.file?(affix_path)
+          raise("invalid affix path #{affix_path.inspect}")
+        end
+
+        unless File.file?(dic_path)
+          raise("invalid dic path #{dic_path.inspect}")
+        end
+
         @ptr = if key
                  Hunspell.Hunspell_create_key(affix_path,dic_path,key)
                else
