@@ -27,6 +27,17 @@ module FFI
     #   attach_function :Hunspell_generate2, [:pointer, :pointer, :string, :pointer, :int], :int
     #
 
+    # The directories to search within for dictionary files
+    DICT_DIRS = [
+      '/usr/local/share/myspell',
+      '/usr/share/myspell'
+    ]
+
+    # prepend the ~/.hunspell_default directory to DICT_DIRS
+    if (home = (ENV['HOME'] || ENV['HOMEPATH']))
+      DICT_DIRS.unshift(File.join(home,'.hunspell_default'))
+    end
+
     #
     # Opens a Hunspell dictionary.
     #
