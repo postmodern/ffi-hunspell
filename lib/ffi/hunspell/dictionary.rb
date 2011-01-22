@@ -4,6 +4,12 @@ module FFI
   module Hunspell
     class Dictionary
 
+      # The affix file extension
+      AFF_EXT = 'aff'
+
+      # The dictionary file extension
+      DIC_EXT = 'dic'
+
       #
       # Creates a new dictionary.
       #
@@ -40,7 +46,7 @@ module FFI
       #   If no block is given, the open dictionary will be returned.
       #
       def self.open(path)
-        dict = self.new("#{path}.aff","#{path}.dic")
+        dict = self.new("#{path}.#{AFF_EXT}","#{path}.#{DIC_EXT}")
 
         if block_given?
           yield dict
