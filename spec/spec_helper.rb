@@ -1,4 +1,12 @@
 require 'rspec'
-require 'ffi'
+require 'ffi/hunspell'
 
 include FFI
+
+RSpec.configure do |specs|
+  specs.before(:suite) do
+    if ENV['HUNSPELL_ROOT']
+      Hunspell.directories << ENV['HUNSPELL_ROOT']
+    end
+  end
+end

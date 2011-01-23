@@ -50,8 +50,8 @@ module FFI
     #
     # Opens a Hunspell dictionary.
     #
-    # @param [String] path
-    #   The path prefix shared by the `.aff` and `.dic` files.
+    # @param [Symbol, String] name
+    #   The name of the dictionary to open.
     #
     # @yield [dict]
     #   The given block will be passed the Hunspell dictionary.
@@ -61,8 +61,8 @@ module FFI
     #
     # @return [nil]
     #
-    def Hunspell.dict(path,&block)
-      Dictionary.open(path,&block)
+    def Hunspell.dict(name,&block)
+      Dictionary.open(name,&block)
     end
   end
 end

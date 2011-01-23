@@ -44,8 +44,8 @@ module FFI
       #
       # Opens a Hunspell dictionary.
       #
-      # @param [String] path
-      #   The path prefix shared by the `.aff` and `.dic` files.
+      # @param [Symbol, String] name
+      #   The name of the dictionary to open.
       #
       # @yield [dict]
       #   The given block will be passed the Hunspell dictionary.
@@ -56,17 +56,31 @@ module FFI
       # @return [Dictionary]
       #   If no block is given, the open dictionary will be returned.
       #
-      def self.open(path)
-        dict = self.new("#{path}.#{AFF_EXT}","#{path}.#{DIC_EXT}")
+      # @raise [RuntimeError]
+      #   The dictionary files could not be found in any of the directories.
+      #
+      def self.open(name)
+        name = name.to_s
 
-        if block_given?
-          yield dict
+        Hunspell.directories.each do |dir|
+          affix_path = File.join(dir,"#{name}.#{AFF_EXT}")
+          dic_path = File.join(dir,"#{name}.#{DIC_EXT}")
 
-          dict.close
-          return nil
-        else
-          return dict
+          if (File.file?(affix_path) && File.file?(dic_path))
+            dict = self.new(affix_path,dic_path)
+
+            if block_given?
+              yield dict
+
+              dict.close
+              return nil
+            else
+              return dict
+            end
+          end
         end
+
+        raise("unable to find the dictionary #{name.dump} in any of the directories")
       end
 
       #
