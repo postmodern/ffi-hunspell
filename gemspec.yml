@@ -12,6 +12,7 @@ requirements: libhunspell >= 1.2.0
 
 dependencies:
   ffi: ~> 0.6.0
+  env: ~> 0.1.2
 
 development_dependencies:
   ore-tasks: ~> 0.3.0

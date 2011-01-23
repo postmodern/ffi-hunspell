@@ -49,6 +49,7 @@ Suggest alternate spellings for a word:
 
 * [libhunspell](http://hunspell.sourceforge.net/) >= 1.2.0
 * [ffi](http://github.com/ffi/ffi) ~> 0.6.0
+* [env](http://github.com/postmodern/env) ~> 0.1.2
 
 ## Install
 

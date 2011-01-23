@@ -1,4 +1,5 @@
 require 'ffi'
+require 'env'
 
 module FFI
   module Hunspell
@@ -39,11 +40,7 @@ module FFI
     # @since 0.2.0
     #
     def Hunspell.lang
-      @lang ||= if ENV['LANG']
-                  ENV['LANG'].split('.',2).first
-                else
-                  DEFAULT_LANG
-                end
+      @lang ||= (Env.lang[0] || DEFAULT_LANG)
     end
 
     #
