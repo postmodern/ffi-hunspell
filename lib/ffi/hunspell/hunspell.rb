@@ -38,12 +38,12 @@ module FFI
     #
     # @since 0.2.0
     #
-    def Hunspell.language
-      @language ||= if ENV['LANG']
-                      ENV['LANG'].split('.',2).first
-                    else
-                      DEFAULT_LANG
-                    end
+    def Hunspell.lang
+      @lang ||= if ENV['LANG']
+                  ENV['LANG'].split('.',2).first
+                else
+                  DEFAULT_LANG
+                end
     end
 
     #
@@ -57,8 +57,8 @@ module FFI
     #
     # @since 0.2.0
     #
-    def Hunspell.language=(new_lang)
-      @language = new_lang.to_s
+    def Hunspell.lang=(new_lang)
+      @lang = new_lang.to_s
     end
 
     #

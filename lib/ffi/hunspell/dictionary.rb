@@ -59,7 +59,7 @@ module FFI
       # @raise [RuntimeError]
       #   The dictionary files could not be found in any of the directories.
       #
-      def self.open(name=Hunspell.language)
+      def self.open(name=Hunspell.lang)
         name = name.to_s
 
         Hunspell.directories.each do |dir|
