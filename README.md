@@ -56,9 +56,10 @@ Suggest alternate spellings for a word:
 
 ## Known Issues
 
-Some Linux distributions do not install the `libhunspell-1.2.so` file, but
-instead installs `libhunspell-1.2.so.0`. Simply create a symbolic link
-to the hunspell shared library, so {FFI::Hunspell} can find it:
+Some Linux distributions do not install the `libhunspell-1.2.so`
+shared library file, but instead installs `libhunspell-1.2.so.0`.
+Simply create a symbolic link to the hunspell shared library,
+so that {FFI::Hunspell} can find the library:
 
     # ln -s /usr/lib/libhunspell-1.2.so.0 /usr/lib/libhunspell-1.2.so
 
