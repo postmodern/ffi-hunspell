@@ -2,6 +2,9 @@ require 'ffi/hunspell/hunspell'
 
 module FFI
   module Hunspell
+    #
+    # Represents a dictionary for a specific language.
+    #
     class Dictionary
 
       # The affix file extension
