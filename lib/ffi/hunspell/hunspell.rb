@@ -95,7 +95,7 @@ module FFI
     #
     # @return [nil]
     #
-    def Hunspell.dict(name,&block)
+    def Hunspell.dict(name=Hunspell.lang,&block)
       Dictionary.open(name,&block)
     end
   end
