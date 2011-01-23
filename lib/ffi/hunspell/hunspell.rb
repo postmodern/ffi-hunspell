@@ -27,6 +27,40 @@ module FFI
     #   attach_function :Hunspell_generate2, [:pointer, :pointer, :string, :pointer, :int], :int
     #
 
+    # The language to default to, if no 'LANG' env variable was set.
+    DEFAULT_LANG = 'en_US'
+
+    #
+    # The default language.
+    #
+    # @return [String]
+    #   The name of the default language.
+    #
+    # @since 0.2.0
+    #
+    def Hunspell.language
+      @language ||= if ENV['LANG']
+                      ENV['LANG'].split('.',2).first
+                    else
+                      DEFAULT_LANG
+                    end
+    end
+
+    #
+    # Sets the default language.
+    #
+    # @param [String] name
+    #   The new language name.
+    #
+    # @return [String]
+    #   The name of the new default language.
+    #
+    # @since 0.2.0
+    #
+    def Hunspell.language=(new_lang)
+      @language = new_lang.to_s
+    end
+
     #
     # The directories to search for dictionary files.
     #

@@ -15,6 +15,12 @@ describe Hunspell::Dictionary do
     end
   end
 
+  it "should use the default language, if none was specified" do
+    subject.open do |dict|
+      dict.should_not be_nil
+    end
+  end
+
   it "should create a dictionary from '.aff' and '.dic' files" do
     dict = subject.new(affix_path,dic_path)
     dict.should_not be_nil
