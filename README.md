@@ -14,13 +14,17 @@ Open a dictionary:
 
     require 'ffi/hunspell'
     
-    dict = FFI::Hunspell.dict('/usr/share/myspell/en_US')
-    # ...
-    dict.close
-
-    FFI::Hunspell.dict('/usr/share/myspell/en_US') do |dict|
+    FFI::Hunspell.dict do |dict|
       # ...
     end
+
+    FFI::Hunspell.dict('en_GB') do |dict|
+      # ...
+    end
+
+    dict = FFI::Hunspell.dict('en_GB')
+    # ...
+    dict.close
 
 Check if a word is valid:
 
@@ -48,6 +52,14 @@ Suggest alternate spellings for a word:
 ## Install
 
     $ sudo gem install ffi-hunspell
+
+## Known Issues
+
+Some Linux distributions do not install the `libhunspell-1.2.so` file, but
+instead installs `libhunspell-1.2.so.0`. Simply create a symbolic link
+to the hunspell shared library, so {FFI::Hunspell} can find it:
+
+    # ln -s /usr/lib/libhunspell-1.2.so.0 /usr/lib/libhunspell-1.2.so
 
 ## License
 
