@@ -1,7 +1,8 @@
 # ffi-hunspell
 
-* [github.com/postmodern/ffi-hunspell](http://github.com/postmodern/ffi-hunspell)
-* [github.com/postmodern/ffi-hunspell/issues](http://github.com/postmodern/ffi-hunspell/issues)
+* [Source](http://github.com/postmodern/ffi-hunspell)
+* [Issues](http://github.com/postmodern/ffi-hunspell/issues)
+* [Documentation](http://rubydoc.info/gems/ffi-hunspell)
 * Postmodern (postmodern.mod3 at gmail.com)
 
 ## Description
