@@ -1,3 +1,9 @@
+### 0.2.1 / 2011-01-23
+
+* Require env ~> 0.1.2.
+  * Use `Env.lang` to get the default language.
+* Updated the Copyright years.
+
 ### 0.2.0 / 2011-01-22
 
 * Added {FFI::Hunspell.lang}.
