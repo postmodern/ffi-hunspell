@@ -26,7 +26,7 @@ module FFI
       #   The optional key for encrypted dictionary files.
       #
       # @raise [RuntimeError]
-      #   Either the affix or dic files did not exist.
+      #   Either the `.aff` or `.dic` files did not exist.
       #
       def initialize(affix_path,dic_path,key=nil)
         unless File.file?(affix_path)
