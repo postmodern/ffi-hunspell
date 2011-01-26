@@ -63,15 +63,15 @@ module FFI
 
     # Known directories to search within for dictionaries.
     KNOWN_DIRECTORIES = [
-      # user
+      # User
       Env.home.join(USER_DIR),
-      # debian
+      # Debian
       '/usr/local/share/myspell/dicts',
       '/usr/share/myspell/dicts',
-      # fedora
+      # Fedora
       '/usr/local/share/myspell',
       '/usr/share/myspell',
-      # mac ports
+      # Mac Ports
       '/opt/local/share/hunspell',
       '/opt/share/hunspell'
     ]
