@@ -58,6 +58,24 @@ module FFI
       @lang = new_lang.to_s
     end
 
+    # The directory name used to store user installed dictionaries.
+    USER_DIR = '.hunspell_default'
+
+    # Known directories to search within for dictionaries.
+    KNOWN_DIRECTORIES = [
+      # user
+      Env.home.join(USER_DIR),
+      # debian
+      '/usr/local/share/myspell/dicts',
+      '/usr/share/myspell/dicts',
+      # fedora
+      '/usr/local/share/myspell',
+      '/usr/share/myspell',
+      # mac ports
+      '/opt/local/share/hunspell',
+      '/opt/share/hunspell'
+    ]
+
     #
     # The directories to search for dictionary files.
     #
@@ -67,15 +85,9 @@ module FFI
     # @since 0.2.0
     #
     def Hunspell.directories
-      @directories ||= [
-        '/usr/local/share/myspell',
-        '/usr/share/myspell'
-      ]
-    end
-
-    # prepend the ~/.hunspell_default directory to DIRS
-    if (home = (ENV['HOME'] || ENV['HOMEPATH']))
-      directories.unshift(File.join(home,'.hunspell_default'))
+      @directories ||= KNOWN_DIRECTORIES.select do |path|
+        File.directory?(path)
+      end
     end
 
     #
