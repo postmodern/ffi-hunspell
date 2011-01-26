@@ -1,3 +1,11 @@
+### 0.2.2 / 2011-01-25
+
+* Added {FFI::Hunspell::USER_DIR}.
+* Added {FFI::Hunspell::KNOWN_DIRECTORIES}, containing known dictionary
+  directories used by Debian, Fedora and Mac Ports.
+* Have {FFI::Hunspell.directories} return the dictionary directories found
+  on the system.
+
 ### 0.2.1 / 2011-01-23
 
 * Require env ~> 0.1.2.
