@@ -77,9 +77,9 @@ module FFI
     ]
 
     #
-    # The directories to search for dictionary files.
+    # The dictionary directories to search for dictionary files.
     #
-    # @return [Array]
+    # @return [Array<String, Pathname>]
     #   The directory paths.
     #
     # @since 0.2.0
