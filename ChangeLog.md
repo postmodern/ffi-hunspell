@@ -1,3 +1,9 @@
+### 0.2.3 / 2011-02-02
+
+* Require ffi >= 0.6.0 and <= 1.1.0:
+  * JRuby requires ffi >= 1.0.0.
+  * A lot of projects still require ffi ~> 0.6.0.
+
 ### 0.2.2 / 2011-01-25
 
 * Added {FFI::Hunspell::USER_DIR}.
