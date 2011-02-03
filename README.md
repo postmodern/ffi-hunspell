@@ -3,7 +3,7 @@
 * [Source](http://github.com/postmodern/ffi-hunspell)
 * [Issues](http://github.com/postmodern/ffi-hunspell/issues)
 * [Documentation](http://rubydoc.info/gems/ffi-hunspell)
-* Postmodern (postmodern.mod3 at gmail.com)
+* [Email](postmodern.mod3 at gmail.com)
 
 ## Description
 
