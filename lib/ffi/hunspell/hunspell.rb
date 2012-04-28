@@ -5,7 +5,7 @@ module FFI
   module Hunspell
     extend FFI::Library
 
-    ffi_lib 'hunspell-1.2'
+    ffi_lib ['hunspell-1.2', 'hunspell-1.3']
 
     attach_function :Hunspell_create, [:string, :string], :pointer
     attach_function :Hunspell_create_key, [:string, :string, :string], :pointer
