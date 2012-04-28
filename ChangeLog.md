@@ -1,3 +1,7 @@
+### 0.2.4 / 2012-04-27
+
+* Attempt loading `libhunspell-1.2` and `libhunspell-1.3`.
+
 ### 0.2.3 / 2011-02-02
 
 * Require ffi >= 0.6.0 and <= 1.1.0:
