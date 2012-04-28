@@ -53,7 +53,7 @@ Suggest alternate spellings for a word:
 
 ## Install
 
-    $ sudo gem install ffi-hunspell
+    $ gem install ffi-hunspell
 
 ## Known Issues
 
