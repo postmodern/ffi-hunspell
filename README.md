@@ -1,7 +1,7 @@
 # ffi-hunspell
 
-* [Source](http://github.com/postmodern/ffi-hunspell)
-* [Issues](http://github.com/postmodern/ffi-hunspell/issues)
+* [Source](https://github.com/postmodern/ffi-hunspell)
+* [Issues](https://github.com/postmodern/ffi-hunspell/issues)
 * [Documentation](http://rubydoc.info/gems/ffi-hunspell)
 * [Email](postmodern.mod3 at gmail.com)
 
@@ -48,8 +48,8 @@ Suggest alternate spellings for a word:
 ## Requirements
 
 * [libhunspell](http://hunspell.sourceforge.net/) >= 1.2.0
-* [ffi](http://github.com/ffi/ffi) ~> 1.0
-* [env](http://github.com/postmodern/env) ~> 0.2
+* [ffi](https://github.com/ffi/ffi) ~> 1.0
+* [env](https://github.com/postmodern/env) ~> 0.2
 
 ## Install
 
