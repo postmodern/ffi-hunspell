@@ -1,3 +1,8 @@
+### 0.2.5 / 2012-05-11
+
+* Load `libhunspell-1.2.so.0` if `libhunspell-1.2.so` cannot be found.
+* Load `libhunspell-1.3.so.0` if `libhunspell-1.3.so` cannot be found.
+
 ### 0.2.4 / 2012-04-27
 
 * Require ffi ~> 1.0.
