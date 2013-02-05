@@ -9,54 +9,74 @@ describe Hunspell::Dictionary do
   let(:affix_path) { File.join(Hunspell.directories.last,"#{lang}.aff") }
   let(:dic_path) { File.join(Hunspell.directories.last,"#{lang}.dic") }
 
-  it "should find and open a dictionary file for a given language" do
-    subject.open(lang) do |dict|
+  describe "#initialize" do
+    subject { described_class }
+
+    it "should create a dictionary from '.aff' and '.dic' files" do
+      dict = subject.new(affix_path,dic_path)
       dict.should_not be_nil
+
+      dict.close
     end
   end
 
-  it "should create a dictionary from '.aff' and '.dic' files" do
-    dict = subject.new(affix_path,dic_path)
-    dict.should_not be_nil
+  describe "open" do
+    subject { described_class }
 
-    dict.close
+    it "should find and open a dictionary file for a given language" do
+      subject.open(lang) do |dict|
+        dict.should_not be_nil
+      end
+    end
+
+    it "should close the dictionary" do
+      dict = subject.open(lang)
+      dict.close
+
+      dict.should be_closed
+    end
   end
 
-  it "should close the dictionary" do
-    dict = subject.open(lang)
-    dict.close
+  subject { described_class.new(affix_path,dic_path) }
 
-    dict.should be_closed
-  end
+  after(:all) { subject.close }
 
   it "should provide the encoding of the dictionary files" do
-    subject.open(lang) do |dict|
-      dict.encoding.should_not be_empty
-    end
+    subject.encoding.should_not be_empty
   end
 
   it "should check if a word is valid" do
-    subject.open(lang) do |dict|
-      dict.should be_valid('dog')
-      dict.should_not be_valid('dxg')
+    subject.should be_valid('dog')
+    subject.should_not be_valid('dxg')
+  end
+
+  describe "#stem" do
+    it "should find the stems of a word" do
+      subject.stem('fishing').should == %w[fishing fish]
+    end
+
+    context "when there are no stems" do
+      it "should return []" do
+        subject.stem("zzzzzzz").should == []
+      end
     end
   end
 
-  it "should find the stems of a word" do
-    subject.open(lang) do |dict|
-      dict.stem('fishing').should == %w[fishing fish]
-    end
-  end
-
-  it "should suggest alternate spellings for words" do
-    subject.open(lang) do |dict|
-      dict.suggest('arbitrage').should == %w[
+  describe "#suggest" do
+    it "should suggest alternate spellings for words" do
+      subject.suggest('arbitrage').should == %w[
         arbitrage
         arbitrages
         arbitrager
         arbitraged
         arbitrate
       ]
+    end
+
+    context "when there are no suggestions" do
+      it "should return []" do
+        subject.suggest("________").should == []
+      end
     end
   end
 end

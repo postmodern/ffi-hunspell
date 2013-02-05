@@ -165,7 +165,9 @@ module FFI
           count = Hunspell.Hunspell_stem(self,output,word.to_s)
           ptr = output.get_pointer(0)
 
-          stems = ptr.get_array_of_string(0,count)
+          if count > 0
+            stems = ptr.get_array_of_string(0,count)
+          end
         end
 
         return stems
@@ -187,7 +189,9 @@ module FFI
           count = Hunspell.Hunspell_suggest(self,output,word.to_s)
           ptr = output.get_pointer(0)
 
-          suggestions = ptr.get_array_of_string(0,count)
+          if count > 0
+            suggestions = ptr.get_array_of_string(0,count)
+          end
         end
 
         return suggestions
