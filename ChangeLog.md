@@ -1,3 +1,11 @@
+### 0.2.6 / 2013-02-05
+
+* Removed the env dependency.
+* Check the returned count from `Hunsepll_stem` in
+  {FFI::Hunspell::Dictionary#stem}.
+* Check the returned count from `Hunspell_suggest` in
+  {FFI::Hunspell::Dictionary#suggest}.
+
 ### 0.2.5 / 2012-05-11
 
 * Load `libhunspell-1.2.so.0` if `libhunspell-1.2.so` cannot be found.
