@@ -7,7 +7,7 @@
 
 ## Description
 
-Ruby FFI bindings for [Hunspell](http://hunspell.sourceforge.net/).
+Ruby FFI bindings for [Hunspell][libhunspell].
 
 ## Examples
 
@@ -47,9 +47,9 @@ Suggest alternate spellings for a word:
 
 ## Requirements
 
-* [libhunspell](http://hunspell.sourceforge.net/) >= 1.2.0
-* [ffi](https://github.com/ffi/ffi) ~> 1.0
-* [env](https://github.com/postmodern/env) ~> 0.2
+* [libhunspell] >= 1.2.0
+* [ffi] ~> 1.0
+* [env] ~> 0.2
 
 ## Install
 
@@ -69,3 +69,7 @@ so that {FFI::Hunspell} can find the library:
 Copyright (c) 2010-2013 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
+
+[libhunspell]: http://hunspell.sourceforge.net/
+[ffi]: https://github.com/ffi/ffi
+[env]: https://github.com/postmodern/env
