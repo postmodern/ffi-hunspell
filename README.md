@@ -66,6 +66,6 @@ so that {FFI::Hunspell} can find the library:
 
 ## License
 
-Copyright (c) 2010-2012 Hal Brodigan
+Copyright (c) 2010-2013 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
