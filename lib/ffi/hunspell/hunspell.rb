@@ -47,7 +47,7 @@ module FFI
     #
     # Sets the default language.
     #
-    # @param [String] name
+    # @param [String] new_lang
     #   The new language name.
     #
     # @return [String]

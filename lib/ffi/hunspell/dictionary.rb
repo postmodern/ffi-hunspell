@@ -19,7 +19,7 @@ module FFI
       # @param [String] affix_path
       #   The path to the `.aff` file.
       #
-      # @param [String] dict_path
+      # @param [String] dic_path
       #   The path to the `.dic` file.
       #
       # @param [String] key
