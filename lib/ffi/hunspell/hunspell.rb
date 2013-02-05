@@ -1,5 +1,4 @@
 require 'ffi'
-require 'env'
 
 module FFI
   module Hunspell
@@ -30,7 +29,7 @@ module FFI
     #
 
     # The language to default to, if no 'LANG' env variable was set.
-    DEFAULT_LANG = 'en_US'
+    DEFAULT_LANG = ENV.fetch('LANG','en_US.UTF-8').split('.',2).first
 
     #
     # The default language.
@@ -41,7 +40,7 @@ module FFI
     # @since 0.2.0
     #
     def Hunspell.lang
-      @lang ||= (Env.lang[0] || DEFAULT_LANG)
+      @lang ||= DEFAULT_LANG
     end
 
     #
@@ -65,7 +64,7 @@ module FFI
     # Known directories to search within for dictionaries.
     KNOWN_DIRECTORIES = [
       # User
-      Env.home.join(USER_DIR),
+      File.join(Gem.user_home,USER_DIR),
       # Debian
       '/usr/local/share/myspell/dicts',
       '/usr/share/myspell/dicts',

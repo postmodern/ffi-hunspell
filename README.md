@@ -49,7 +49,6 @@ Suggest alternate spellings for a word:
 
 * [libhunspell] >= 1.2.0
 * [ffi] ~> 1.0
-* [env] ~> 0.2
 
 ## Install
 
@@ -72,4 +71,3 @@ See {file:LICENSE.txt} for license information.
 
 [libhunspell]: http://hunspell.sourceforge.net/
 [ffi]: https://github.com/ffi/ffi
-[env]: https://github.com/postmodern/env

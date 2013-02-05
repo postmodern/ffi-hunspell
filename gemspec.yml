@@ -12,7 +12,6 @@ requirements: libhunspell >= 1.2.0
 
 dependencies:
   ffi: ~> 1.0
-  env: ~> 0.2
 
 development_dependencies:
   rubygems-tasks: ~> 0.1
