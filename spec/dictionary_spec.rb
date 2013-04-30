@@ -64,13 +64,13 @@ describe Hunspell::Dictionary do
 
   describe "#suggest" do
     it "should suggest alternate spellings for words" do
-      subject.suggest('arbitrage').should == %w[
-        arbitrage
-        arbitrages
-        arbitrager
-        arbitraged
-        arbitrate
-      ]
+      subject.suggest('arbitrage').should include(*[
+        'arbitrage',
+        'arbitrages',
+        'arbitrager',
+        'arbitraged',
+        'arbitrate'
+      ])
     end
 
     context "when there are no suggestions" do
