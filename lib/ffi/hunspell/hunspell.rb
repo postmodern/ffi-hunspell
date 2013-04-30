@@ -69,7 +69,7 @@ module FFI
       '/usr/local/share/myspell/dicts',
       '/usr/share/myspell/dicts',
       # Ubuntu
-      '/usr/share/myspell',
+      '/usr/share/hunspell',
       # Fedora
       '/usr/local/share/myspell',
       '/usr/share/myspell',
