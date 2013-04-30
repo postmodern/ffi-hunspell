@@ -2,9 +2,9 @@
 
 * [Source](https://github.com/postmodern/ffi-hunspell)
 * [Issues](https://github.com/postmodern/ffi-hunspell/issues)
+* [Travis](https://travis-ci.org/postmodern/ffi-hunspell): ![Build Status](https://secure.travis-ci.org/postmodern/ffi-hunspell.png?branch=master)
 * [Documentation](http://rubydoc.info/gems/ffi-hunspell)
 * [Email](postmodern.mod3 at gmail.com)
-* [Travis](https://travis-ci.org/postmodern/ffi-hunspell): ![Build Status](https://secure.travis-ci.org/postmodern/ffi-hunspell.png?branch=master)
 
 ## Description
 
