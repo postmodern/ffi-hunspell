@@ -37,10 +37,8 @@ module FFI
           raise("invalid dic path #{dic_path.inspect}")
         end
 
-        @ptr = if key
-                 Hunspell.Hunspell_create_key(affix_path,dic_path,key)
-               else
-                 Hunspell.Hunspell_create(affix_path,dic_path)
+        @ptr = if key then Hunspell.Hunspell_create_key(affix_path,dic_path,key)
+               else        Hunspell.Hunspell_create(affix_path,dic_path)
                end
       end
 
@@ -67,7 +65,7 @@ module FFI
 
         Hunspell.directories.each do |dir|
           affix_path = File.join(dir,"#{name}.#{AFF_EXT}")
-          dic_path = File.join(dir,"#{name}.#{DIC_EXT}")
+          dic_path   = File.join(dir,"#{name}.#{DIC_EXT}")
 
           if (File.file?(affix_path) && File.file?(dic_path))
             dict = self.new(affix_path,dic_path)
@@ -165,7 +163,7 @@ module FFI
 
         FFI::MemoryPointer.new(:pointer) do |output|
           count = Hunspell.Hunspell_stem(self,output,word.to_s)
-          ptr = output.get_pointer(0)
+          ptr   = output.get_pointer(0)
 
           if count > 0
             stems = ptr.get_array_of_string(0,count)
@@ -189,7 +187,7 @@ module FFI
 
         FFI::MemoryPointer.new(:pointer) do |output|
           count = Hunspell.Hunspell_suggest(self,output,word.to_s)
-          ptr = output.get_pointer(0)
+          ptr   = output.get_pointer(0)
 
           if count > 0
             suggestions = ptr.get_array_of_string(0,count)
