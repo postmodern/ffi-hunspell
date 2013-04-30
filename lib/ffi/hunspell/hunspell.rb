@@ -68,6 +68,8 @@ module FFI
       # Debian
       '/usr/local/share/myspell/dicts',
       '/usr/share/myspell/dicts',
+      # Ubuntu
+      '/usr/share/myspell',
       # Fedora
       '/usr/local/share/myspell',
       '/usr/share/myspell',
