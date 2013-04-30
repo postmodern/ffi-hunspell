@@ -172,7 +172,7 @@ module FFI
           end
         end
 
-        return stems
+        return stems.map { |word| force_encoding(word) }
       end
 
       #
@@ -196,7 +196,7 @@ module FFI
           end
         end
 
-        return suggestions
+        return suggestions.map { |word| force_encoding(word) }
       end
 
       #
@@ -223,7 +223,17 @@ module FFI
 
       protected
 
-      def encode(string)
+      #
+      # Encodes a String into the dictionary's encoding.
+      #
+      # @param [String] string
+      #   The unencoded String.
+      #
+      # @return [String]
+      #   The encoded String.
+      #
+      def force_encoding(string)
+        string.force_encoding(encoding)
       end
 
     end
