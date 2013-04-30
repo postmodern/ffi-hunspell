@@ -5,6 +5,8 @@
 * [Documentation](http://rubydoc.info/gems/ffi-hunspell)
 * [Email](postmodern.mod3 at gmail.com)
 
+[![Build Status](https://secure.travis-ci.org/postmodern/ffi-hunspell.png?branch=master)](https://travis-ci.org/postmodern/ffi-hunspell)
+
 ## Description
 
 Ruby FFI bindings for [Hunspell][libhunspell].
