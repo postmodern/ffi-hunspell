@@ -63,6 +63,12 @@ describe Hunspell::Dictionary do
       subject.stem('fishing').should == %w[fishing fish]
     end
 
+    it "should force_encode all strings" do
+      subject.suggest('fishing').all? { |string|
+        string.encoding == subject.encoding
+      }.should be_true
+    end
+
     context "when there are no stems" do
       it "should return []" do
         subject.stem("zzzzzzz").should == []
@@ -79,6 +85,12 @@ describe Hunspell::Dictionary do
         'arbitraged',
         'arbitrate'
       ])
+    end
+
+    it "should force_encode all strings" do
+      subject.suggest('arbitrage').all? { |string|
+        string.encoding == subject.encoding
+      }.should be_true
     end
 
     context "when there are no suggestions" do
