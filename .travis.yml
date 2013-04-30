@@ -1,6 +1,6 @@
 language: ruby
 before_install:
-  - sudo apt-get install libhunspell-dev
+  - sudo apt-get install libhunspell-dev hunspell-en-us
   - gem install ffi rubygems-tasks rspec yard
 rvm:
   - 1.9.3
