@@ -57,7 +57,7 @@ module FFI
       # @return [Dictionary]
       #   If no block is given, the open dictionary will be returned.
       #
-      # @raise [RuntimeError]
+      # @raise [ArgumentError]
       #   The dictionary files could not be found in any of the directories.
       #
       def self.open(name)
@@ -81,7 +81,7 @@ module FFI
           end
         end
 
-        raise("unable to find the dictionary #{name.dump} in any of the directories")
+        raise(ArgumentError,"unable to find the dictionary #{name.dump} in any of the directories")
       end
 
       #

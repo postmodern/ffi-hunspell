@@ -35,6 +35,14 @@ describe Hunspell::Dictionary do
 
       dict.should be_closed
     end
+
+    context "when given an unknown dictionary name" do
+      it "should raise an ArgumentError" do
+        lambda {
+          subject.open('foo')
+        }.should raise_error(ArgumentError)
+      end
+    end
   end
 
   subject { described_class.new(affix_path,dic_path) }
