@@ -99,11 +99,13 @@ module FFI
       #
       # The encoding of the dictionary file.
       #
-      # @return [String]
+      # @return [Encoding]
       #   The encoding of the dictionary file.
       #
       def encoding
-        Hunspell.Hunspell_get_dic_encoding(self)
+        @encoding ||= Encoding.const_get(
+          Hunspell.Hunspell_get_dic_encoding(self).gsub('-','_')
+        )
       end
 
       #
@@ -217,6 +219,11 @@ module FFI
       #
       def to_ptr
         @ptr
+      end
+
+      protected
+
+      def encode(string)
       end
 
     end

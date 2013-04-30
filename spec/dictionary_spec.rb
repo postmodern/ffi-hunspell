@@ -42,7 +42,7 @@ describe Hunspell::Dictionary do
   after(:all) { subject.close }
 
   it "should provide the encoding of the dictionary files" do
-    subject.encoding.should_not be_empty
+    subject.encoding.should == Encoding::ISO_8859_1
   end
 
   it "should check if a word is valid" do
