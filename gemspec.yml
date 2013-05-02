@@ -5,7 +5,7 @@ description: Ruby FFI bindings for Hunspell spell checker.
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
-homepage: https://github.com/postmodern/ffi-hunspell
+homepage: https://github.com/postmodern/ffi-hunspell#readme
 has_yard: true
 
 requirements: libhunspell >= 1.2.0
