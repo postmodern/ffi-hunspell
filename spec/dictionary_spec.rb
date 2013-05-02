@@ -35,6 +35,14 @@ describe Hunspell::Dictionary do
 
       dict.should be_closed
     end
+
+    context "when given an unknown dictionary name" do
+      it "should raise an ArgumentError" do
+        lambda {
+          subject.open('foo')
+        }.should raise_error(ArgumentError)
+      end
+    end
   end
 
   subject { described_class.new(affix_path,dic_path) }
@@ -42,7 +50,7 @@ describe Hunspell::Dictionary do
   after(:all) { subject.close }
 
   it "should provide the encoding of the dictionary files" do
-    subject.encoding.should_not be_empty
+    subject.encoding.should == Encoding::ISO_8859_1
   end
 
   it "should check if a word is valid" do
@@ -53,6 +61,12 @@ describe Hunspell::Dictionary do
   describe "#stem" do
     it "should find the stems of a word" do
       subject.stem('fishing').should == %w[fishing fish]
+    end
+
+    it "should force_encode all strings" do
+      subject.suggest('fishing').all? { |string|
+        string.encoding == subject.encoding
+      }.should be_true
     end
 
     context "when there are no stems" do
@@ -71,6 +85,12 @@ describe Hunspell::Dictionary do
         'arbitraged',
         'arbitrate'
       ])
+    end
+
+    it "should force_encode all strings" do
+      subject.suggest('arbitrage').all? { |string|
+        string.encoding == subject.encoding
+      }.should be_true
     end
 
     context "when there are no suggestions" do

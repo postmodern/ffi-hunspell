@@ -37,10 +37,8 @@ module FFI
           raise("invalid dic path #{dic_path.inspect}")
         end
 
-        @ptr = if key
-                 Hunspell.Hunspell_create_key(affix_path,dic_path,key)
-               else
-                 Hunspell.Hunspell_create(affix_path,dic_path)
+        @ptr = if key then Hunspell.Hunspell_create_key(affix_path,dic_path,key)
+               else        Hunspell.Hunspell_create(affix_path,dic_path)
                end
       end
 
@@ -59,7 +57,7 @@ module FFI
       # @return [Dictionary]
       #   If no block is given, the open dictionary will be returned.
       #
-      # @raise [RuntimeError]
+      # @raise [ArgumentError]
       #   The dictionary files could not be found in any of the directories.
       #
       def self.open(name)
@@ -67,7 +65,7 @@ module FFI
 
         Hunspell.directories.each do |dir|
           affix_path = File.join(dir,"#{name}.#{AFF_EXT}")
-          dic_path = File.join(dir,"#{name}.#{DIC_EXT}")
+          dic_path   = File.join(dir,"#{name}.#{DIC_EXT}")
 
           if (File.file?(affix_path) && File.file?(dic_path))
             dict = self.new(affix_path,dic_path)
@@ -83,7 +81,7 @@ module FFI
           end
         end
 
-        raise("unable to find the dictionary #{name.dump} in any of the directories")
+        raise(ArgumentError,"unable to find the dictionary #{name.dump} in any of the directories")
       end
 
       #
@@ -99,11 +97,13 @@ module FFI
       #
       # The encoding of the dictionary file.
       #
-      # @return [String]
+      # @return [Encoding]
       #   The encoding of the dictionary file.
       #
       def encoding
-        Hunspell.Hunspell_get_dic_encoding(self)
+        @encoding ||= Encoding.const_get(
+          Hunspell.Hunspell_get_dic_encoding(self).gsub('-','_')
+        )
       end
 
       #
@@ -163,14 +163,14 @@ module FFI
 
         FFI::MemoryPointer.new(:pointer) do |output|
           count = Hunspell.Hunspell_stem(self,output,word.to_s)
-          ptr = output.get_pointer(0)
+          ptr   = output.get_pointer(0)
 
           if count > 0
             stems = ptr.get_array_of_string(0,count)
           end
         end
 
-        return stems
+        return stems.map { |word| force_encoding(word) }
       end
 
       #
@@ -187,14 +187,14 @@ module FFI
 
         FFI::MemoryPointer.new(:pointer) do |output|
           count = Hunspell.Hunspell_suggest(self,output,word.to_s)
-          ptr = output.get_pointer(0)
+          ptr   = output.get_pointer(0)
 
           if count > 0
             suggestions = ptr.get_array_of_string(0,count)
           end
         end
 
-        return suggestions
+        return suggestions.map { |word| force_encoding(word) }
       end
 
       #
@@ -217,6 +217,21 @@ module FFI
       #
       def to_ptr
         @ptr
+      end
+
+      protected
+
+      #
+      # Encodes a String into the dictionary's encoding.
+      #
+      # @param [String] string
+      #   The unencoded String.
+      #
+      # @return [String]
+      #   The encoded String.
+      #
+      def force_encoding(string)
+        string.force_encoding(encoding)
       end
 
     end
