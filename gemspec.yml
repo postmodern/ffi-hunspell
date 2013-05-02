@@ -1,7 +1,7 @@
 name: ffi-hunspell
 version: 0.3.0
 summary: FFI bindings for Hunspell
-description: Ruby FFI bindings for Hunspell spell checker.
+description: Ruby FFI bindings for the Hunspell spell checker.
 license: MIT
 authors: Postmodern
 email: postmodern.mod3@gmail.com
