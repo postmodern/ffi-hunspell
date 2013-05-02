@@ -1,3 +1,11 @@
+### 0.3.0 / 2013-05-01
+
+* Detect Ubuntu's hunspell directory (`/usr/share/hunspell`).
+* {FFI::Hunspell::Dictionary#encoding} now returns an `Encoding` object.
+* Encode Strings returned from {FFI::Hunspell::Dictionary#stem} and
+  {FFI::Hunspell::Dictionary#suggestions} to match the dictionary's native
+  encoding.
+
 ### 0.2.6 / 2013-02-05
 
 * Removed the env dependency.
