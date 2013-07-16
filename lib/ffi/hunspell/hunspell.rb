@@ -39,7 +39,7 @@ module FFI
     #
     # @since 0.2.0
     #
-    def Hunspell.lang
+    def self.lang
       @lang ||= DEFAULT_LANG
     end
 
@@ -54,7 +54,7 @@ module FFI
     #
     # @since 0.2.0
     #
-    def Hunspell.lang=(new_lang)
+    def self.lang=(new_lang)
       @lang = new_lang.to_s
     end
 
@@ -86,7 +86,7 @@ module FFI
     #
     # @since 0.2.0
     #
-    def Hunspell.directories
+    def self.directories
       @directories ||= KNOWN_DIRECTORIES.select do |path|
         File.directory?(path)
       end
@@ -106,7 +106,7 @@ module FFI
     #
     # @return [nil]
     #
-    def Hunspell.dict(name=Hunspell.lang,&block)
+    def self.dict(name=Hunspell.lang,&block)
       Dictionary.open(name,&block)
     end
   end
