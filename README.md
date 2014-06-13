@@ -57,7 +57,7 @@ Suggest alternate spellings for a word:
     $ gem install ffi-hunspell
     
 
-* Download dictionaries (you can find some on the [OpenOffice Archive](http://archive.services.openoffice.org/pub/mirror/OpenOffice.org/contrib/dictionaries) 
+* Download dictionaries (you can find some on the [OpenOffice Archive](http://archive.services.openoffice.org/pub/mirror/OpenOffice.org/contrib/dictionaries))
 * (Unzip them and) copy files with `.aff` and `.dic` into one of [these directories](lib/ffi/hunspell/hunspell.rb#L65-82)
 
 ## License
