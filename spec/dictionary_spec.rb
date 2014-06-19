@@ -2,30 +2,28 @@ require 'spec_helper'
 require 'ffi/hunspell/dictionary'
 
 describe Hunspell::Dictionary do
-  subject { Hunspell::Dictionary }
+  subject { described_class }
 
   let(:lang) { 'en_US' }
-
   let(:affix_path) { File.join(Hunspell.directories.last,"#{lang}.aff") }
-  let(:dic_path) { File.join(Hunspell.directories.last,"#{lang}.dic") }
+  let(:dic_path)   { File.join(Hunspell.directories.last,"#{lang}.dic") }
 
   describe "#initialize" do
-    subject { described_class }
+    subject { described_class.new(affix_path,dic_path) }
 
     it "should create a dictionary from '.aff' and '.dic' files" do
-      dict = subject.new(affix_path,dic_path)
-      dict.should_not be_nil
-
-      dict.close
+      expect(subject.to_ptr).to_not be_nil
     end
+
+    after { subject.close }
   end
 
-  describe "open" do
+  describe ".open" do
     subject { described_class }
 
     it "should find and open a dictionary file for a given language" do
       subject.open(lang) do |dict|
-        dict.should_not be_nil
+        expect(dict).to_not be_nil
       end
     end
 
@@ -33,69 +31,71 @@ describe Hunspell::Dictionary do
       dict = subject.open(lang)
       dict.close
 
-      dict.should be_closed
+      expect(dict).to be_closed
     end
 
     context "when given an unknown dictionary name" do
       it "should raise an ArgumentError" do
-        lambda {
+        expect {
           subject.open('foo')
-        }.should raise_error(ArgumentError)
+        }.to raise_error(ArgumentError)
       end
     end
   end
 
-  subject { described_class.new(affix_path,dic_path) }
+  context "when opened" do
+    subject { described_class.new(affix_path,dic_path) }
 
-  after(:all) { subject.close }
+    after { subject.close }
 
-  it "should provide the encoding of the dictionary files" do
-    subject.encoding.should == Encoding::ISO_8859_1
-  end
-
-  it "should check if a word is valid" do
-    subject.should be_valid('dog')
-    subject.should_not be_valid('dxg')
-  end
-
-  describe "#stem" do
-    it "should find the stems of a word" do
-      subject.stem('fishing').should == %w[fishing fish]
+    it "should provide the encoding of the dictionary files" do
+      expect(subject.encoding).to be Encoding::ISO_8859_1
     end
 
-    it "should force_encode all strings" do
-      subject.suggest('fishing').all? { |string|
-        string.encoding == subject.encoding
-      }.should be_true
+    it "should check if a word is valid" do
+      expect(subject.valid?('dog')).to be true
+      expect(subject.valid?('dxg')).to be false
     end
 
-    context "when there are no stems" do
-      it "should return []" do
-        subject.stem("zzzzzzz").should == []
+    describe "#stem" do
+      it "should find the stems of a word" do
+        expect(subject.stem('fishing')).to be == %w[fishing fish]
+      end
+
+      it "should force_encode all strings" do
+        expect(subject.suggest('fishing').all? { |string|
+          string.encoding == subject.encoding
+        }).to be true
+      end
+
+      context "when there are no stems" do
+        it "should return []" do
+          expect(subject.stem("zzzzzzz")).to be == []
+        end
       end
     end
-  end
 
-  describe "#suggest" do
-    it "should suggest alternate spellings for words" do
-      subject.suggest('arbitrage').should include(*[
-        'arbitrage',
-        'arbitrages',
-        'arbitrager',
-        'arbitraged',
-        'arbitrate'
-      ])
-    end
+    describe "#suggest" do
+      it "should suggest alternate spellings for words" do
+        expect(subject.suggest('arbitrage')).to include(
+          'arbitrage',
+          'arbitrages',
+          'arbitrager',
+          'arbitraged',
+          'arbitrate'
+        )
+      end
 
-    it "should force_encode all strings" do
-      subject.suggest('arbitrage').all? { |string|
-        string.encoding == subject.encoding
-      }.should be_true
-    end
+      it "should force_encode all strings" do
+        expect(subject.suggest('arbitrage').all? { |string|
+          string.encoding == subject.encoding
+        }).to be true
+      end
 
-    context "when there are no suggestions" do
-      it "should return []" do
-        subject.suggest("________").should == []
+      context "when there are no suggestions" do
+        it "should return []" do
+          expect(subject.suggest("________")).to be == []
+        end
       end
     end
   end
