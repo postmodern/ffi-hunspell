@@ -63,9 +63,9 @@ describe Hunspell::Dictionary do
       end
 
       it "should force_encode all strings" do
-        expect(subject.suggest('fishing').all? { |string|
+        expect(subject.suggest('fishing')).to all satisfy { |string|
           string.encoding == subject.encoding
-        }).to be true
+        }
       end
 
       context "when there are no stems" do
@@ -87,9 +87,9 @@ describe Hunspell::Dictionary do
       end
 
       it "should force_encode all strings" do
-        expect(subject.suggest('arbitrage').all? { |string|
+        expect(subject.suggest('arbitrage')).to all satisfy { |string|
           string.encoding == subject.encoding
-        }).to be true
+        }
       end
 
       context "when there are no suggestions" do
