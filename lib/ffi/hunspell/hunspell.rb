@@ -4,8 +4,11 @@ module FFI
   module Hunspell
     extend FFI::Library
 
-    ffi_lib ['hunspell-1.2', 'libhunspell-1.2.so.0',
-             'hunspell-1.3', 'libhunspell-1.3.so.0']
+    ffi_lib [
+      'hunspell-1.3', 'libhunspell-1.3.so.0',
+      'hunspell-1.2', 'libhunspell-1.2.so.0'
+    ]
+
 
     attach_function :Hunspell_create, [:string, :string], :pointer
     attach_function :Hunspell_create_key, [:string, :string, :string], :pointer
@@ -90,6 +93,10 @@ module FFI
       @directories ||= KNOWN_DIRECTORIES.select do |path|
         File.directory?(path)
       end
+    end
+
+    def self.directories=(dirs)
+      @directories = dirs
     end
 
     #
