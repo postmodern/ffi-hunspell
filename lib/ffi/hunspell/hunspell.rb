@@ -78,7 +78,10 @@ module FFI
       '/usr/share/myspell',
       # Mac Ports
       '/opt/local/share/hunspell',
-      '/opt/share/hunspell'
+      '/opt/share/hunspell',
+      # Homebrew
+      '/Library/Spelling',
+      '~/Library/Spelling'
     ]
 
     #
