@@ -68,6 +68,9 @@ module FFI
     KNOWN_DIRECTORIES = [
       # User
       File.join(Gem.user_home,USER_DIR),
+      # OS X brew-instlled hunspell
+      File.join(Gem.user_home,'Library/Spelling'),
+      '/Library/Spelling',
       # Debian
       '/usr/local/share/myspell/dicts',
       '/usr/share/myspell/dicts',
