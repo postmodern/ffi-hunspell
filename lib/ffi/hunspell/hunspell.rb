@@ -22,6 +22,7 @@ module FFI
     attach_function :Hunspell_generate, [:pointer, :pointer, :string, :string], :int
     attach_function :Hunspell_add, [:pointer, :string], :int
     attach_function :Hunspell_add_with_affix, [:pointer, :string, :string], :int
+    attach_function :Hunspell_add_dic, [:pointer, :string], :int
     attach_function :Hunspell_remove, [:pointer, :string], :int
     attach_function :Hunspell_free_list, [:pointer, :pointer, :int], :void
 

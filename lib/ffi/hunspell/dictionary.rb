@@ -120,6 +120,28 @@ module FFI
         Hunspell.Hunspell_add_affix(self,word.to_s,example.to_s)
       end
 
+      #
+      # Load an extra dictionary file. The extra dictionaries use the
+      # affix file of the allocated Hunspell object.
+      #
+      # Maximal number of extra dictionaries is limited in the source code (20)
+      #
+      # @param [String] dic_path
+      #   The path to the extra `.dic` file.
+      #
+      # @raise [RuntimeError]
+      #   The extra `.dic` file did not exist.
+      #
+      #
+      def add_dic(dic_path)
+
+        unless File.file?(dic_path)
+          raise("invalid extra dictionary path #{dic_path.inspect}")
+        end
+
+        Hunspell.Hunspell_add_dic(self,dic_path)
+      end
+
       alias << add
 
       #
