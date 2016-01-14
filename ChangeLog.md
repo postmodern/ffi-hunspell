@@ -1,6 +1,6 @@
 ### 0.3.1 / 2016-01-14
 
-* Upgrade to loading hunspell-1.3.
+* Prefer loading hunspell-1.3 over hunspell-1.2, if both are installed.
 * Support auto-detection of hunspell installed by homebrew (@forward3d).
 
 ### 0.3.0 / 2013-05-01
