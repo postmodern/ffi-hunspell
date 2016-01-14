@@ -49,7 +49,7 @@ Suggest alternate spellings for a word:
 
 ## Requirements
 
-* [libhunspell] >= 1.2.0
+* [libhunspell] >= 1.3.0
 * [ffi] ~> 1.0
 
 ## Install
