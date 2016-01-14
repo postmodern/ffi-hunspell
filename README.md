@@ -58,7 +58,7 @@ Suggest alternate spellings for a word:
 
 ## License
 
-Copyright (c) 2010-2013 Hal Brodigan
+Copyright (c) 2010-2016 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
 
