@@ -49,7 +49,7 @@ describe Hunspell::Dictionary do
     after { subject.close }
 
     it "should provide the encoding of the dictionary files" do
-      expect(subject.encoding).to be Encoding::ISO_8859_1
+      expect(subject.encoding).to be_instance_of Encoding
     end
 
     it "should check if a word is valid" do
