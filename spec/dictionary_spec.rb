@@ -58,18 +58,28 @@ describe Hunspell::Dictionary do
     end
 
     describe "#add_dic" do
-      before { subject.add_dic(File.join(__dir__, 'files/extra.dic')) }
+      if FFI::Hunspell.respond_to?(:Hunspell_add_dic)
+        context "when libhunspell supports add_dic" do
+            before { subject.add_dic(File.join(__dir__, 'files/extra.dic')) }
 
-      it "should add an extra dictionary" do
-        expect(subject.add_dic(File.join(__dir__, 'files/extra.dic'))).to be 0
-      end
+          it "should add an extra dictionary" do
+            expect(subject.add_dic(File.join(__dir__, 'files/extra.dic'))).to be 0
+          end
 
-      it "should validate a word from the extra dictionary" do
-        expect(subject.valid?('dxg')).to be true
-      end
+          it "should validate a word from the extra dictionary" do
+            expect(subject.valid?('dxg')).to be true
+          end
 
-      it "should validate an affixed word based on an affix flag from base affix file" do
-        expect(subject.valid?('dxgs')).to be true
+          it "should validate an affixed word based on an affix flag from base affix file" do
+            expect(subject.valid?('dxgs')).to be true
+          end
+        end
+      else
+        context "when libhunspell does not support add_dic" do
+          it "should raise an error" do
+            expect { subject.add_dic(File.join(__dir__, 'files/extra.dic')) }.to raise_error(NotImplementedError)
+          end
+        end
       end
     end
 

@@ -22,9 +22,14 @@ module FFI
     attach_function :Hunspell_generate, [:pointer, :pointer, :string, :string], :int
     attach_function :Hunspell_add, [:pointer, :string], :int
     attach_function :Hunspell_add_with_affix, [:pointer, :string, :string], :int
-    attach_function :Hunspell_add_dic, [:pointer, :string], :int
     attach_function :Hunspell_remove, [:pointer, :string], :int
     attach_function :Hunspell_free_list, [:pointer, :pointer, :int], :void
+
+    begin
+      attach_function :Hunspell_add_dic, [:pointer, :string], :int
+    rescue FFI::NotFoundError
+      warn("Hunspell_add_dic was not found in [#{ffi_libraries.map(&:name).join(", ")}]. You must to install Hunspell 1.3.4 or later if you need this functionality.")
+    end
 
     #
     # missing functions:
@@ -120,6 +125,14 @@ module FFI
     #
     def self.dict(name=Hunspell.lang,&block)
       Dictionary.open(name,&block)
+    end
+
+    def self.method_missing(symbol, *arguments, &block)
+      if symbol == :Hunspell_add_dic
+        raise NotImplementedError, "Hunspell_add_dic was not found in [#{ffi_libraries.map(&:name).join(", ")}]. You must to install Hunspell 1.3.4 or later if you need this functionality."
+      end
+
+      super
     end
   end
 end
