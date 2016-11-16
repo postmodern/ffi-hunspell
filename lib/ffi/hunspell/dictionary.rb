@@ -116,6 +116,8 @@ module FFI
         Hunspell.Hunspell_add(self,word.to_s)
       end
 
+      alias << add
+
       def add_affix(word,example)
         Hunspell.Hunspell_add_affix(self,word.to_s,example.to_s)
       end
@@ -134,15 +136,12 @@ module FFI
       #
       #
       def add_dic(dic_path)
-
         unless File.file?(dic_path)
           raise("invalid extra dictionary path #{dic_path.inspect}")
         end
 
         Hunspell.Hunspell_add_dic(self,dic_path)
       end
-
-      alias << add
 
       #
       # Removes a word from the dictionary.
