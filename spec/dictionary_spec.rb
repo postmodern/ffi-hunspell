@@ -57,6 +57,22 @@ describe Hunspell::Dictionary do
       expect(subject.valid?('dxg')).to be false
     end
 
+    describe "#add_dic" do
+      before { subject.add_dic(File.join(__dir__, 'files/extra.dic')) }
+
+      it "should add an extra dictionary" do
+        expect(subject.add_dic(File.join(__dir__, 'files/extra.dic'))).to be 0
+      end
+
+      it "should validate a word from the extra dictionary" do
+        expect(subject.valid?('dxg')).to be true
+      end
+
+      it "should validate an affixed word based on an affix flag from base affix file" do
+        expect(subject.valid?('dxgs')).to be true
+      end
+    end
+
     describe "#stem" do
       it "should find the stems of a word" do
         expect(subject.stem('fishing')).to be == %w[fishing fish]
