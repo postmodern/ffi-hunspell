@@ -57,6 +57,20 @@ describe Hunspell::Dictionary do
       expect(subject.valid?('dxg')).to be false
     end
 
+    describe "#add" do
+      it "should add a word" do
+        expect(subject.add('cat')).to be 0
+      end
+    end
+
+    describe "#add_with_affix" do
+      it "should add a word with an example word" do
+        expect(subject.add_with_affix('cat', 'agree')).to be 0
+        expect(subject.valid?('disagreeable')).to be true
+        expect(subject.valid?('discatable')).to be true
+      end
+    end
+
     describe "#stem" do
       it "should find the stems of a word" do
         expect(subject.stem('fishing')).to be == %w[fishing fish]
