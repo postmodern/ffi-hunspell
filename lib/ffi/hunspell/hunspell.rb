@@ -31,7 +31,7 @@ module FFI
       define_singleton_method :method_missing do |symbol, *arguments, &block|
         if symbol == :Hunspell_add_dic
           raise NotImplementedError,
-            "Hunspell_add_dic was not found in [#{ffi_libraries.map(&:name).join(", ")}]. You must to install Hunspell 1.3.4 or later if you need this functionality."
+            "Hunspell_add_dic was not found in [#{ffi_libraries.map(&:name).join(", ")}]. You must install Hunspell 1.3.4 or later if you need this functionality."
         end
 
         super
