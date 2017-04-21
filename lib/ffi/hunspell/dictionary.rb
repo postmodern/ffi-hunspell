@@ -122,7 +122,7 @@ module FFI
       # @param [#to_s] word
       #   The word to add to the dictionary.
       #
-      # @param [#to_s] affix
+      # @param [#to_s] example
       #   Affix flags.
       #
       def add_with_affix(word,example)
