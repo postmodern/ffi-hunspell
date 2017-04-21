@@ -120,6 +120,13 @@ module FFI
         Hunspell.Hunspell_add_with_affix(self,word.to_s,example.to_s)
       end
 
+      #
+      # @deprecated Please use {#add_with_affix} instead.
+      #
+      def add_affix(word,example)
+        add_with_affix(word,example)
+      end
+
       alias << add
 
       #
