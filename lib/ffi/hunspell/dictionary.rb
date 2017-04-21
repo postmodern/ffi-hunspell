@@ -116,6 +116,15 @@ module FFI
         Hunspell.Hunspell_add(self,word.to_s)
       end
 
+      #
+      # Adds a word to the dictionary with affix flags.
+      #
+      # @param [String] word
+      #   The word to add to the dictionary.
+      #
+      # @param [String] affix
+      #   Affix flags.
+      #
       def add_with_affix(word,example)
         Hunspell.Hunspell_add_with_affix(self,word.to_s,example.to_s)
       end
