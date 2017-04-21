@@ -109,7 +109,7 @@ module FFI
       #
       # Adds a word to the dictionary.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word to add to the dictionary.
       #
       def add(word)
@@ -119,10 +119,10 @@ module FFI
       #
       # Adds a word to the dictionary with affix flags.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word to add to the dictionary.
       #
-      # @param [String] affix
+      # @param [#to_s] affix
       #   Affix flags.
       #
       def add_with_affix(word,example)
@@ -141,7 +141,7 @@ module FFI
       #
       # Removes a word from the dictionary.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word to remove.
       #
       def remove(word)
@@ -153,7 +153,7 @@ module FFI
       #
       # Checks if the word is validate.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word in question.
       #
       # @return [Boolean]
@@ -168,7 +168,7 @@ module FFI
       #
       # Finds the stems of a word.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word in question.
       #
       # @return [Array<String>]
@@ -192,7 +192,7 @@ module FFI
       #
       # Suggests alternate spellings of a word.
       #
-      # @param [String] word
+      # @param [#to_s] word
       #   The word in question.
       #
       # @return [Array<String>]
