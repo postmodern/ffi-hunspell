@@ -1,4 +1,4 @@
-### 0.3.2 / 2017-04-21
+### 0.4.0 / 2017-04-21
 
 * Added support for libhunspell-1.6.
 * Added support for libhunspell-1.5 (@trench8891).

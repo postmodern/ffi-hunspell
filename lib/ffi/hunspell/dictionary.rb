@@ -125,7 +125,7 @@ module FFI
       # @param [#to_s] example
       #   Affix flags.
       #
-      # @since 0.3.2
+      # @since 0.4.0
       #
       def add_with_affix(word,example)
         Hunspell.Hunspell_add_with_affix(self,word.to_s,example.to_s)
