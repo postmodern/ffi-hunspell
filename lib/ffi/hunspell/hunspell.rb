@@ -5,6 +5,7 @@ module FFI
     extend FFI::Library
 
     ffi_lib [
+      'hunspell-1.7', 'libhunspell-1.7.so.0',
       'hunspell-1.6', 'libhunspell-1.6.so.0',
       'hunspell-1.5', 'libhunspell-1.5.so.0',
       'hunspell-1.4', 'libhunspell-1.4.so.0',
