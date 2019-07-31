@@ -16,7 +16,7 @@ Ruby FFI bindings for [Hunspell][libhunspell].
 Open a dictionary:
 ```rb
 require 'ffi/hunspell'
-    
+
 FFI::Hunspell.dict do |dict|
   # ...
 end
@@ -29,6 +29,21 @@ dict = FFI::Hunspell.dict('en_GB')
 # ...
 dict.close
 ```
+Add your own custom directory path:
+
+```rb
+dict = FFI::Hunspell.add_directory('/application_path/lib')
+
+# => /Library/Spelling
+# => /usr/local/share/myspell/dicts
+# => /usr/share/myspell/dicts
+# => /usr/share/hunspell
+# => /usr/local/share/myspell
+# => /usr/share/myspell
+# => /opt/local/share/hunspell
+# => /opt/share/hunspell
+# => /application_path/lib
+
 
 Check if a word is valid:
 ```rb
