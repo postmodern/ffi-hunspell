@@ -43,7 +43,7 @@ dict = FFI::Hunspell.add_directory('/application_path/lib')
 # => /opt/local/share/hunspell
 # => /opt/share/hunspell
 # => /application_path/lib
-
+```
 
 Check if a word is valid:
 ```rb
