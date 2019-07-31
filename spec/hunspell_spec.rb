@@ -19,6 +19,14 @@ describe Hunspell do
     end
   end
 
+  describe ".add_directory" do
+    subject { super().add_directory("/application/lib/directories") }
+
+    it "should have directories to search within application lib directory" do
+      expect(subject).to include("/application/lib/directories")
+    end
+  end
+
   describe ".dict" do
     it "should open a dictionary file" do
       subject.dict('en_US') do |dict|

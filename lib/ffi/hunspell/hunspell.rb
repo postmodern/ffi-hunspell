@@ -123,5 +123,10 @@ module FFI
     def self.dict(name=Hunspell.lang,&block)
       Dictionary.open(name,&block)
     end
+
+    def self.add_directory(custom_path)
+      KNOWN_DIRECTORIES << custom_path
+    end
+
   end
 end
