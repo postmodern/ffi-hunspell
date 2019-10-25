@@ -10,4 +10,4 @@ rvm:
 matrix:
   allow_failures:
     - rvm: rbx
-script: rake spec
+script: bundle exec rake spec
