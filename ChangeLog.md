@@ -1,3 +1,8 @@
+### 0.5.0 / 2019-10-24
+
+* Added support for libhunspell-1.7 (@dorner).
+* Added {FFI::Hunspell::VERSION}.
+
 ### 0.4.0 / 2017-04-21
 
 * Added support for libhunspell-1.6.
