@@ -59,7 +59,7 @@ $ gem install ffi-hunspell
 ```
 ## License
 
-Copyright (c) 2010-2016 Hal Brodigan
+Copyright (c) 2010-2019 Hal Brodigan
 
 See {file:LICENSE.txt} for license information.
 
