@@ -28,6 +28,19 @@ module FFI
     attach_function :Hunspell_remove, [:pointer, :string], :int
     attach_function :Hunspell_free_list, [:pointer, :pointer, :int], :void
 
+    begin
+      attach_function :Hunspell_add_dic, [:pointer, :string], :int
+    rescue FFI::NotFoundError
+      define_singleton_method :method_missing do |symbol, *arguments, &block|
+        if symbol == :Hunspell_add_dic
+          raise NotImplementedError,
+            "Hunspell_add_dic was not found in [#{ffi_libraries.map(&:name).join(", ")}]. You must install Hunspell 1.3.4 or later if you need this functionality."
+        end
+
+        super
+      end
+    end
+
     #
     # missing functions:
     #
