@@ -1,5 +1,4 @@
 name: ffi-hunspell
-version: 0.3.1
 summary: FFI bindings for Hunspell
 description: Ruby FFI bindings for the Hunspell spell checker.
 license: MIT
@@ -8,7 +7,7 @@ email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/ffi-hunspell#readme
 has_yard: true
 
-requirements: libhunspell >= 1.2.0
+requirements: libhunspell >= 1.2.0, <= 1.7.0
 
 required_ruby_version: ">= 1.9.1"
 
@@ -16,6 +15,4 @@ dependencies:
   ffi: ~> 1.0
 
 development_dependencies:
-  rubygems-tasks: ~> 0.1
-  rspec: ~> 3.0
-  yard: ~> 0.7
+  bundler: ~> 2.0

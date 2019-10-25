@@ -14,48 +14,49 @@ Ruby FFI bindings for [Hunspell][libhunspell].
 ## Examples
 
 Open a dictionary:
-
-    require 'ffi/hunspell'
+```rb
+require 'ffi/hunspell'
     
-    FFI::Hunspell.dict do |dict|
-      # ...
-    end
+FFI::Hunspell.dict do |dict|
+  # ...
+end
 
-    FFI::Hunspell.dict('en_GB') do |dict|
-      # ...
-    end
+FFI::Hunspell.dict('en_GB') do |dict|
+  # ...
+end
 
-    dict = FFI::Hunspell.dict('en_GB')
-    # ...
-    dict.close
+dict = FFI::Hunspell.dict('en_GB')
+# ...
+dict.close
+```
 
 Check if a word is valid:
+```rb
+dict.check?('dog')
+# => true
 
-    dict.check?('dog')
-    # => true
-
-    dict.check?('d0g')
-    # => false
-
+dict.check?('d0g')
+# => false
+```
 Find the stems of a word:
-
-    dict.stem('dogs')
-    # => ["dog"]
-
+```rb
+dict.stem('dogs')
+# => ["dog"]
+```
 Suggest alternate spellings for a word:
-
-    dict.suggest('arbitrage')
-    # => ["arbitrage", "arbitrages", "arbitrager", "arbitraged", "arbitrate"]
-
+```rb
+dict.suggest('arbitrage')
+# => ["arbitrage", "arbitrages", "arbitrager", "arbitraged", "arbitrate"]
+```
 ## Requirements
 
 * [libhunspell] >= 1.2.0
 * [ffi] ~> 1.0
 
 ## Install
-
-    $ gem install ffi-hunspell
-
+```sh
+$ gem install ffi-hunspell
+```
 ## License
 
 Copyright (c) 2010-2016 Hal Brodigan

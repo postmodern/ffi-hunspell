@@ -1,3 +1,16 @@
+### 0.5.0 / 2019-10-24
+
+* Added support for libhunspell-1.7 (@dorner).
+* Added {FFI::Hunspell::VERSION}.
+
+### 0.4.0 / 2017-04-21
+
+* Added support for libhunspell-1.6.
+* Added support for libhunspell-1.5 (@trench8891).
+* Added support for libhunspell-1.4 (@willmoorefyi).
+* Renamed `#add_affix` to {FFI::Hunspell::Dictionary#add_with_affix}
+  (@cdchapman).
+
 ### 0.3.1 / 2016-01-14
 
 * Prefer loading hunspell-1.3 over hunspell-1.2, if both are installed.

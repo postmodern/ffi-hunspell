@@ -1,13 +1,9 @@
 language: ruby
 before_install:
   - sudo apt-get install libhunspell-dev hunspell-en-us
-  - gem install ffi rubygems-tasks rspec yard
+  - gem install bundler -v "~> 2.0"
 rvm:
-  - 1.9.3
-  - 2.3.0
+  - 2.5
+  - 2.6
   - jruby
-  - rbx
-matrix:
-  allow_failures:
-    - rvm: rbx
-script: rake spec
+script: bundle exec rake spec
