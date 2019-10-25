@@ -1,6 +1,6 @@
 module FFI
   module Hunspell
-    # ffi-hunspell version
-    VERSION = '0.4.0'
+    # ffi-hunspell versiont 
+    VERSION = '0.5.0'
   end
 end
