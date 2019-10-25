@@ -58,12 +58,16 @@ describe Hunspell::Dictionary do
     end
 
     describe "#add_dic" do
+      let(:extra_dic) { File.join(File.dirname(File.realpath(__FILE__)), 'files/extra.dic') }
+
       if FFI::Hunspell.respond_to?(:Hunspell_add_dic)
         context "when libhunspell supports add_dic" do
-            before { subject.add_dic(File.join(File.dirname(File.realpath(__FILE__)), 'files/extra.dic')) }
+          before do
+            subject.add_dic(extra_dic)
+          end
 
           it "should add an extra dictionary" do
-            expect(subject.add_dic(File.join(File.dirname(File.realpath(__FILE__)), 'files/extra.dic'))).to be 0
+            expect(subject.add_dic(extra_dic)).to be 0
           end
 
           it "should validate a word from the extra dictionary" do
@@ -77,7 +81,9 @@ describe Hunspell::Dictionary do
       else
         context "when libhunspell does not support add_dic" do
           it "should raise an error" do
-            expect { subject.add_dic(File.join(File.dirname(File.realpath(__FILE__)), 'files/extra.dic')) }.to raise_error(NotImplementedError)
+            expect {
+              subject.add_dic(extra_dic)
+            }.to raise_error(NotImplementedError)
           end
         end
       end
