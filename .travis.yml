@@ -6,8 +6,4 @@ rvm:
   - 2.5
   - 2.6
   - jruby
-  - rbx
-matrix:
-  allow_failures:
-    - rvm: rbx
 script: bundle exec rake spec
