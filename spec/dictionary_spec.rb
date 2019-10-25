@@ -58,7 +58,7 @@ describe Hunspell::Dictionary do
     end
 
     describe "#add_dic" do
-      let(:extra_dic) { File.join(File.dirname(File.realpath(__FILE__)), 'files/extra.dic') }
+      let(:extra_dic) { File.join(File.dirname(__FILE__),'fixtures/extra.dic') }
 
       if FFI::Hunspell.respond_to?(:Hunspell_add_dic)
         context "when libhunspell supports add_dic" do
