@@ -1,5 +1,4 @@
 name: ffi-hunspell
-version: 0.4.0
 summary: FFI bindings for Hunspell
 description: Ruby FFI bindings for the Hunspell spell checker.
 license: MIT
