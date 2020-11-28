@@ -28,7 +28,7 @@ jobs:
       - name: Install libhunspell
         run: |
           sudo apt update -y && \
-          sudo apt install -y libhunspell-dev hunspell-en-us
+          sudo apt install -y --no-install-recommends --no-install-suggests libhunspell-dev hunspell-en-us
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
       - name: Run tests
