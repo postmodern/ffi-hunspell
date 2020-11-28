@@ -55,7 +55,7 @@ dict.suggest('arbitrage')
 
 ## Requirements
 
-* [libhunspell] >= 1.2.0
+* [libhunspell] >= 1.2.0, <= 1.7.0
 * [ffi] ~> 1.0
 
 ## Install
