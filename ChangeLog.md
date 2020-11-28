@@ -1,3 +1,8 @@
+### 0.6.0 / 2020-11-28
+
+* Added {FFI::Hundspell::Dictionary#add_dic} which adds an extra dictionary
+  file. (@cdchapman)
+
 ### 0.5.0 / 2019-10-24
 
 * Added support for libhunspell-1.7 (@dorner).
