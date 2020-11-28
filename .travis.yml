@@ -1,9 +1,0 @@
-language: ruby
-before_install:
-  - sudo apt-get install libhunspell-dev hunspell-en-us
-  - gem install bundler -v "~> 2.0"
-rvm:
-  - 2.5
-  - 2.6
-  - jruby
-script: bundle exec rake spec
