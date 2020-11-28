@@ -152,6 +152,8 @@ module FFI
       # @raise [RuntimeError]
       #   The extra `.dic` file did not exist.
       #
+      # @since 0.6.0
+      #
       def add_dic(dic_path)
         unless File.file?(dic_path)
           raise("invalid extra dictionary path #{dic_path.inspect}")
