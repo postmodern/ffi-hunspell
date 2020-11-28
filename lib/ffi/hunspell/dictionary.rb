@@ -149,14 +149,14 @@ module FFI
       # @param [String] dic_path
       #   The path to the extra `.dic` file.
       #
-      # @raise [RuntimeError]
+      # @raise [ArgumentError]
       #   The extra `.dic` file did not exist.
       #
       # @since 0.6.0
       #
       def add_dic(dic_path)
         unless File.file?(dic_path)
-          raise("invalid extra dictionary path #{dic_path.inspect}")
+          raise(ArgumentError,"invalid extra dictionary path #{dic_path.inspect}")
         end
 
         Hunspell.Hunspell_add_dic(self,dic_path)

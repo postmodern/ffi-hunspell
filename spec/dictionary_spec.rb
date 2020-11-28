@@ -70,6 +70,12 @@ describe Hunspell::Dictionary do
             expect(subject.add_dic(extra_dic)).to be 0
           end
 
+          context "when the given extra dictionary file cannot be found" do
+            it do
+              expect { subject.add_dic('foo') }.to raise_error(ArgumentError)
+            end
+          end
+
           it "should validate a word from the extra dictionary" do
             expect(subject.valid?('dxg')).to be true
           end
