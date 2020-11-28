@@ -14,6 +14,7 @@ Ruby FFI bindings for [Hunspell][libhunspell].
 ## Examples
 
 Open a dictionary:
+
 ```rb
 require 'ffi/hunspell'
     
@@ -31,6 +32,7 @@ dict.close
 ```
 
 Check if a word is valid:
+
 ```rb
 dict.check?('dog')
 # => true
@@ -38,25 +40,32 @@ dict.check?('dog')
 dict.check?('d0g')
 # => false
 ```
+
 Find the stems of a word:
+
 ```rb
 dict.stem('dogs')
 # => ["dog"]
 ```
+
 Suggest alternate spellings for a word:
+
 ```rb
 dict.suggest('arbitrage')
 # => ["arbitrage", "arbitrages", "arbitrager", "arbitraged", "arbitrate"]
 ```
+
 ## Requirements
 
 * [libhunspell] >= 1.2.0
 * [ffi] ~> 1.0
 
 ## Install
+
 ```sh
 $ gem install ffi-hunspell
 ```
+
 ## License
 
 Copyright (c) 2010-2019 Hal Brodigan
