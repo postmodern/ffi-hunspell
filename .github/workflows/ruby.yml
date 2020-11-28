@@ -31,7 +31,7 @@ jobs:
           sudo apt install -y libhunspell-dev hunspell-en-us
       - name: Install dependencies
         run: bundle install --jobs 4 --retry 3
-        env:
-          LANG: en_US.UTF-8
       - name: Run tests
         run: bundle exec rake test
+        env:
+          LANG: en_US.UTF-8
