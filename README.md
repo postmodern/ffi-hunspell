@@ -64,6 +64,20 @@ dict.suggest('arbitrage')
 $ gem install ffi-hunspell
 ```
 
+### libhunspell
+
+* Debian / Ubuntu:
+
+      $ sudo apt install libhunspell-dev hunspell-en-us
+
+* RedHat / Fedora:
+
+      $ sudo dnf install hunspell-devel hunspell-en
+
+* macOS:
+
+      $ brew install hunspell
+
 ## License
 
 Copyright (c) 2010-2020 Hal Brodigan
