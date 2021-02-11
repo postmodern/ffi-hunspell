@@ -207,6 +207,8 @@ module FFI
 
           if count > 0
             stems = ptr.get_array_of_string(0,count)
+
+            Hunspell.Hunspell_free_list(self,output,count)
           end
         end
 
@@ -231,6 +233,8 @@ module FFI
 
           if count > 0
             suggestions = ptr.get_array_of_string(0,count)
+
+            Hunspell.Hunspell_free_list(self,output,count)
           end
         end
 
