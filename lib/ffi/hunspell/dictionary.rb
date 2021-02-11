@@ -37,9 +37,11 @@ module FFI
           raise("invalid dic path #{dic_path.inspect}")
         end
 
-        @ptr = if key then Hunspell.Hunspell_create_key(affix_path,dic_path,key)
-               else        Hunspell.Hunspell_create(affix_path,dic_path)
-               end
+        ptr = if key then Hunspell.Hunspell_create_key(affix_path,dic_path,key)
+              else        Hunspell.Hunspell_create(affix_path,dic_path)
+              end
+
+        @ptr = FFI::AutoPointer.new(ptr,Hunspell.method(:Hunspell_destroy))
       end
 
       #
@@ -247,8 +249,7 @@ module FFI
       # @return [nil]
       #
       def close
-        Hunspell.Hunspell_destroy(self)
-
+        @ptr.free
         @ptr = nil
         return nil
       end
