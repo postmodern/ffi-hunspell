@@ -85,4 +85,4 @@ Copyright (c) 2010-2021 Hal Brodigan
 See {file:LICENSE.txt} for license information.
 
 [libhunspell]: http://hunspell.github.io/
-[ffi]: https://github.com/ffi/ffi
+[ffi]: https://github.com/ffi/ffi#readme
