@@ -1,3 +1,13 @@
+### 0.6.1 / 2021-02-11
+
+* Fixed a possible memory leak in {FFI::Hunspell::Dictionary#stem} and 
+  {FFI::Hunspell::Dictionary#suggest}.
+* Prevent a possible memory leak if {FFI::Hunspell::Dictionary#close} is not
+  called, which deallocates the underlying libhunspell handler pointer,
+  before the dictionary is garbage collected. Note: if
+  {FFI::Hunspell::Dictionary.open} is called with a block, the dictionary object
+  will explicitly be closed once the block returns.
+
 ### 0.6.0 / 2020-11-28
 
 * Added {FFI::Hunspell::Dictionary#add_dic} which adds an extra dictionary
