@@ -249,8 +249,11 @@ module FFI
       # @return [nil]
       #
       def close
-        @ptr.free
-        @ptr = nil
+        if @ptr
+          @ptr.free
+          @ptr = nil
+        end
+
         return nil
       end
 
