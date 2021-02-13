@@ -1,4 +1,4 @@
-### 0.6.1 / 2021-02-11
+### 0.6.1 / 2021-02-12
 
 * Fixed a possible memory leak in {FFI::Hunspell::Dictionary#stem} and 
   {FFI::Hunspell::Dictionary#suggest}.
