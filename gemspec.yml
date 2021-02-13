@@ -7,6 +7,12 @@ email: postmodern.mod3@gmail.com
 homepage: https://github.com/postmodern/ffi-hunspell#readme
 has_yard: true
 
+metadata:
+  documentation_uri: https://rubydoc.info/gems/ffi-hunspell
+  source_code_uri:   https://github.com/postmodern/ffi-hunspell
+  bug_tracker_uri:   https://github.com/postmodern/ffi-hunspell/issues
+  changelog_uri:     https://github.com/postmodern/ffi-hunspell/blob/master/ChangeLog.md
+
 requirements: libhunspell >= 1.2.0, <= 1.7.0
 
 required_ruby_version: ">= 1.9.1"
