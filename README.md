@@ -1,6 +1,7 @@
 # ffi-hunspell
 
 [![CI](https://github.com/postmodern/ffi-hunspell/actions/workflows/ruby.yml/badge.svg)](https://github.com/postmodern/ffi-hunspell/actions/workflows/ruby.yml)
+[![Code Climate](https://codeclimate.com/github/postmodern/ffi-hunspell.svg)](https://codeclimate.com/github/postmodern/ffi-hunspell)
 
 * [Source](https://github.com/postmodern/ffi-hunspell)
 * [Issues](https://github.com/postmodern/ffi-hunspell/issues)
